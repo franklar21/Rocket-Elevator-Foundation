@@ -681,23 +681,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jabir\\.nuget\\packages\\": {},
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jabir\\Documents\\GitHub\\API_CSharp\\API_CSharp.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\API_CSharp.csproj",
       "projectName": "API_CSharp",
-      "projectPath": "C:\\Users\\jabir\\Documents\\GitHub\\API_CSharp\\API_CSharp.csproj",
-      "packagesPath": "C:\\Users\\jabir\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jabir\\Documents\\GitHub\\API_CSharp\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\API_CSharp.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jabir\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
