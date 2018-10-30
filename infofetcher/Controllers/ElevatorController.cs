@@ -28,7 +28,7 @@ namespace infofetcher.Controllers {
             }
             return item;
         }
-
+        
         [HttpPut ("{id}", Name = "PutElevatorStatus")]
         public string Update (long id, [FromBody] JObject body) {
 
@@ -48,6 +48,5 @@ namespace infofetcher.Controllers {
                 return "Invalid status: Must be Active, Inactive, Alarm or Intervention";
             }
         }
-
     }
 }
