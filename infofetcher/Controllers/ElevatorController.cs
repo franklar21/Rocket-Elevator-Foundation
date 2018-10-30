@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using infofetcher.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace infofetcher.Controllers {
     [Route ("api/elevators")]
@@ -27,6 +28,25 @@ namespace infofetcher.Controllers {
             }
             return item;
         }
-        
+
+        [HttpPut ("{id}", Name = "ChangeElevatorStatus")]
+        public string Update (long id, [FromBody] JObject body) {
+            
+            var elevator = _context.Elevators.Find (id);
+            if (elevator == null) {
+                return "Please enter a new status";
+            }
+
+            var newStatus = (string)body.SelectToken("status");
+            if (newStatus == "Active"  || (newStatus == "Inactive" ) || (newStatus == "Alarm" ) || (newStatus == "Intervention")){
+                var initialStatus = elevator.status;
+                elevator.status = newStatus;
+                _context.Elevators.Update (elevator);
+                _context.SaveChanges ();
+                return "The status of elevator #" + elevator.id + " successfuly changed from " + initialStatus + " to " + newStatus;
+            } else {
+                return "Invalid status: Must be Active, Inactive, Alarm or Intervention";
+            }
+        }
     }
 }

@@ -11583,11 +11583,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\infofetcher.csproj",
+      "projectUniqueName": "C:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\infofetcher.csproj",
       "projectName": "infofetcher",
-      "projectPath": "c:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\infofetcher.csproj",
+      "projectPath": "C:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\infofetcher.csproj",
       "packagesPath": "C:\\Users\\mathi\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\obj\\",
+      "outputPath": "C:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11642,5 +11642,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\obj\\infofetcher.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
