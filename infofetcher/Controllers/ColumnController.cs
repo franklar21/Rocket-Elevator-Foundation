@@ -45,6 +45,7 @@ namespace infofetcher.Controllers {
                 column.Status = status;
                 _context.Columns.Update (column);
                 _context.SaveChanges ();
+                // please.
                 return "The column #" + column.Id + " has changed status from " + previous_status + ", to " + status + ".";
             }else {
                 return "Not Found";
