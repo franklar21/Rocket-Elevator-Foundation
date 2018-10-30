@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using infofetcher.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace infofetcher.Controllers {
     [Route ("api/columns")]
@@ -22,25 +23,32 @@ namespace infofetcher.Controllers {
         [HttpGet ("{id}", Name = "GetColumns")]
         public string GetById (string Status, long id) {
             var item = _context.Columns.Find (id);
+            var _column = item.Id;
             var _status = item.Status;
             if (item == null) {
-                return "";
+                return "Not Found";
             }
-            return _status;
+            return "The Column #" + _column + " is currently " + _status + ".";
         }
 
-        [HttpPut ("{id}")]
-        public IActionResult Update (long id, Columns item) {
-            var Columns = _context.Columns.Find (id);
-            if (Columns == null) {
-                return NotFound ();
+        [HttpPut ("{id}", Name = "ChangeColumnStatus")]
+        public string Update (long id, [FromBody] JObject body) {
+            
+            var column = _context.Columns.Find (id);
+            if (column == null) {
+                return "Not Found";
             }
-
-            Columns.Status = item.Status;
-
-            _context.Columns.Update (Columns);
-            _context.SaveChanges ();
-            return NoContent ();
+            
+            var previous_status = column.Status; 
+            var status = (string)body.SelectToken("status");
+            if (status == "Active" || status == "Inactive" || status == "Alarm" || status == "Intervention"){
+                column.Status = status;
+                _context.Columns.Update (column);
+                _context.SaveChanges ();
+                return "The column #" + column.Id + " has changed status from " + previous_status + ", to " + status + ".";
+            }else {
+                return "Not Found";
+            }
         }
     }
 }
