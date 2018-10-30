@@ -6,8 +6,11 @@ namespace infofetcher.Models
     public partial class Quotes
     {
         public long Id { get; set; }
+        public string Type { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public int? NbAppartments { get; set; }
+        public int? NbBasements { get; set; }
         public string QuoteType { get; set; }
         public string FullName { get; set; }
         public string BusinessName { get; set; }

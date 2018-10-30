@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace infofetcher.Models
 {
-    public partial class rocket_devContext : DbContext
+    public partial class mathieu_h_appContext : DbContext
     {
-        public rocket_devContext()
+        public mathieu_h_appContext()
         {
         }
 
-        public rocket_devContext(DbContextOptions<rocket_devContext> options)
+        public mathieu_h_appContext(DbContextOptions<mathieu_h_appContext> options)
             : base(options)
         {
         }
@@ -28,17 +28,9 @@ namespace infofetcher.Models
         public virtual DbSet<Leads> Leads { get; set; }
         public virtual DbSet<Quotes> Quotes { get; set; }
         public virtual DbSet<SchemaMigrations> SchemaMigrations { get; set; }
-        public virtual DbSet<Sms> Sms { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=localhost;database=rocket_dev;user=jabsaidi;pwd=Flame123;");
-            }
-        }
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -588,7 +580,7 @@ namespace infofetcher.Models
                     .HasColumnName("email")
                     .HasColumnType("varchar(255)");
 
-                entity.Property(e => e.FileAttachment)
+                entity.Property(e => e.file_attachment)
                     .HasColumnName("file_attachment")
                     .HasColumnType("mediumblob");
 
@@ -722,22 +714,6 @@ namespace infofetcher.Models
                     .HasColumnType("varchar(255)");
             });
 
-            modelBuilder.Entity<Sms>(entity =>
-            {
-                entity.ToTable("sms");
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("bigint(20)");
-
-                entity.Property(e => e.CreatedAt)
-                    .HasColumnName("created_at")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.UpdatedAt)
-                    .HasColumnName("updated_at")
-                    .HasColumnType("datetime");
-            });
 
             modelBuilder.Entity<Users>(entity =>
             {

@@ -9,9 +9,9 @@ namespace infofetcher.Controllers
     [ApiController]
     public class Columncontroller : ControllerBase 
     {
-        private readonly rocket_devContext _context;
+        private readonly mathieu_h_appContext _context;
 
-        public Columncontroller (rocket_devContext context) {
+        public Columncontroller (mathieu_h_appContext context) {
             _context = context;
             
         }
