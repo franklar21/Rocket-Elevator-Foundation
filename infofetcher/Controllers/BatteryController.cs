@@ -4,6 +4,7 @@ using infofetcher.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
+// just so i can push
 namespace infofetcher.Controllers
 {
     [Route ("api/batteries")]
