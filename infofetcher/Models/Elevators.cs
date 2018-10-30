@@ -5,19 +5,19 @@ namespace infofetcher.Models
 {
     public partial class Elevators
     {
-        public long id { get; set; }
-        public long? column_id { get; set; }
-        public int? serial_number { get; set; }
-        public string model { get; set; }
-        public string building_type { get; set; }
-        public string status { get; set; }
-        public DateTime? in_service_since { get; set; }
-        public DateTime? last_inspection { get; set; }
-        public string inspection_certificate { get; set; }
-        public string information { get; set; }
-        public string notes { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        public long Id { get; set; }
+        public long? ColumnId { get; set; }
+        public int? SerialNumber { get; set; }
+        public string Model { get; set; }
+        public string BuildingType { get; set; }
+        public string Status { get; set; }
+        public DateTime? InServiceSince { get; set; }
+        public DateTime? LastInspection { get; set; }
+        public string InspectionCertificate { get; set; }
+        public string Information { get; set; }
+        public string Notes { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         public virtual Columns Column { get; set; }
     }

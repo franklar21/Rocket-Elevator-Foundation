@@ -19,9 +19,10 @@ namespace infofetcher.Models
         public string ProjectDescription { get; set; }
         public string Department { get; set; }
         public string Message { get; set; }
-        public byte[] file_attachment { get; set; }
+        public byte[] FileAttachment { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public string AttachmentFile { get; set; }
         public string OriginalFilename { get; set; }
 
         public virtual ICollection<Customers> Customers { get; set; }

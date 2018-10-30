@@ -11583,19 +11583,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "c:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\infofetcher\\infofetcher.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\API_CSharp\\infofetcher\\infofetcher.csproj",
       "projectName": "infofetcher",
-      "projectPath": "c:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\infofetcher\\infofetcher.csproj",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\API_CSharp\\infofetcher\\infofetcher.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\infofetcher\\obj\\",
-=======
-      "projectUniqueName": "c:\\Users\\jabir\\Documents\\GitHub\\API_CSharp\\infofetcher\\infofetcher.csproj",
-      "projectName": "infofetcher",
-      "projectPath": "c:\\Users\\jabir\\Documents\\GitHub\\API_CSharp\\infofetcher\\infofetcher.csproj",
-      "packagesPath": "C:\\Users\\jabir\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\jabir\\Documents\\GitHub\\API_CSharp\\infofetcher\\obj\\",
->>>>>>> master
+      "outputPath": "C:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\API_CSharp\\infofetcher\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11648,5 +11640,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Admin\\Desktop\\gilles\\API_CSharp\\API_CSharp\\infofetcher\\obj\\infofetcher.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

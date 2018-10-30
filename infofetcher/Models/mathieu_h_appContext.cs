@@ -15,25 +15,85 @@ namespace infofetcher.Models
         {
         }
 
+        public virtual DbSet<ActiveAdminComments> ActiveAdminComments { get; set; }
         public virtual DbSet<Addresses> Addresses { get; set; }
+        public virtual DbSet<AdminUsers> AdminUsers { get; set; }
         public virtual DbSet<ArInternalMetadata> ArInternalMetadata { get; set; }
         public virtual DbSet<Batteries> Batteries { get; set; }
         public virtual DbSet<BuildingDetails> BuildingDetails { get; set; }
         public virtual DbSet<Buildings> Buildings { get; set; }
         public virtual DbSet<Columns> Columns { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<EfmigrationsHistory> EfmigrationsHistory { get; set; }
         public virtual DbSet<Elevators> Elevators { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Leads> Leads { get; set; }
         public virtual DbSet<Quotes> Quotes { get; set; }
         public virtual DbSet<SchemaMigrations> SchemaMigrations { get; set; }
+        public virtual DbSet<Sms> Sms { get; set; }
+        public virtual DbSet<Soums> Soums { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-       
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;port=3306;database=mathieu_h_app;user=codeboxx;password=Codeboxx1!");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ActiveAdminComments>(entity =>
+            {
+                entity.ToTable("active_admin_comments");
+
+                entity.HasIndex(e => e.Namespace)
+                    .HasName("index_active_admin_comments_on_namespace");
+
+                entity.HasIndex(e => new { e.AuthorType, e.AuthorId })
+                    .HasName("index_active_admin_comments_on_author_type_and_author_id");
+
+                entity.HasIndex(e => new { e.ResourceType, e.ResourceId })
+                    .HasName("index_active_admin_comments_on_resource_type_and_resource_id");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.AuthorId)
+                    .HasColumnName("author_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.AuthorType)
+                    .HasColumnName("author_type")
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.Body)
+                    .HasColumnName("body")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.Namespace)
+                    .HasColumnName("namespace")
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.ResourceId)
+                    .HasColumnName("resource_id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.ResourceType)
+                    .HasColumnName("resource_type")
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnName("updated_at")
+                    .HasColumnType("datetime");
+            });
+
             modelBuilder.Entity<Addresses>(entity =>
             {
                 entity.ToTable("addresses");
@@ -89,6 +149,55 @@ namespace infofetcher.Models
                 entity.Property(e => e.ZipCode)
                     .HasColumnName("zip_code")
                     .HasColumnType("varchar(255)");
+            });
+
+            modelBuilder.Entity<AdminUsers>(entity =>
+            {
+                entity.ToTable("admin_users");
+
+                entity.HasIndex(e => e.Email)
+                    .HasName("index_admin_users_on_email")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.ResetPasswordToken)
+                    .HasName("index_admin_users_on_reset_password_token")
+                    .IsUnique();
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnName("email")
+                    .HasColumnType("varchar(255)")
+                    .HasDefaultValueSql("''");
+
+                entity.Property(e => e.EncryptedPassword)
+                    .IsRequired()
+                    .HasColumnName("encrypted_password")
+                    .HasColumnType("varchar(255)")
+                    .HasDefaultValueSql("''");
+
+                entity.Property(e => e.RememberCreatedAt)
+                    .HasColumnName("remember_created_at")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.ResetPasswordSentAt)
+                    .HasColumnName("reset_password_sent_at")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.ResetPasswordToken)
+                    .HasColumnName("reset_password_token")
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnName("updated_at")
+                    .HasColumnType("datetime");
             });
 
             modelBuilder.Entity<ArInternalMetadata>(entity =>
@@ -428,82 +537,68 @@ namespace infofetcher.Models
                     .HasConstraintName("fk_rails_9917eeaf5d");
             });
 
-            modelBuilder.Entity<EfmigrationsHistory>(entity =>
-            {
-                entity.HasKey(e => e.MigrationId)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("__EFMigrationsHistory");
-
-                entity.Property(e => e.MigrationId).HasColumnType("varchar(95)");
-
-                entity.Property(e => e.ProductVersion)
-                    .IsRequired()
-                    .HasColumnType("varchar(32)");
-            });
-
             modelBuilder.Entity<Elevators>(entity =>
             {
                 entity.ToTable("elevators");
 
-                entity.HasIndex(e => e.column_id)
+                entity.HasIndex(e => e.ColumnId)
                     .HasName("index_elevators_on_column_id");
 
-                entity.Property(e => e.id)
+                entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.building_type)
+                entity.Property(e => e.BuildingType)
                     .HasColumnName("building_type")
                     .HasColumnType("varchar(255)");
 
-                entity.Property(e => e.column_id)
+                entity.Property(e => e.ColumnId)
                     .HasColumnName("column_id")
                     .HasColumnType("bigint(20)");
 
-                entity.Property(e => e.created_at)
+                entity.Property(e => e.CreatedAt)
                     .HasColumnName("created_at")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.in_service_since)
+                entity.Property(e => e.InServiceSince)
                     .HasColumnName("in_service_since")
                     .HasColumnType("date");
 
-                entity.Property(e => e.information)
+                entity.Property(e => e.Information)
                     .HasColumnName("information")
                     .HasColumnType("text");
 
-                entity.Property(e => e.inspection_certificate)
+                entity.Property(e => e.InspectionCertificate)
                     .HasColumnName("inspection_certificate")
                     .HasColumnType("varchar(255)");
 
-                entity.Property(e => e.last_inspection)
+                entity.Property(e => e.LastInspection)
                     .HasColumnName("last_inspection")
                     .HasColumnType("date");
 
-                entity.Property(e => e.model)
+                entity.Property(e => e.Model)
                     .HasColumnName("model")
                     .HasColumnType("varchar(255)");
 
-                entity.Property(e => e.notes)
+                entity.Property(e => e.Notes)
                     .HasColumnName("notes")
                     .HasColumnType("text");
 
-                entity.Property(e => e.serial_number)
+                entity.Property(e => e.SerialNumber)
                     .HasColumnName("serial_number")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.status)
+                entity.Property(e => e.Status)
                     .HasColumnName("status")
                     .HasColumnType("varchar(255)");
 
-                entity.Property(e => e.updated_at)
+                entity.Property(e => e.UpdatedAt)
                     .HasColumnName("updated_at")
                     .HasColumnType("datetime");
 
                 entity.HasOne(d => d.Column)
                     .WithMany(p => p.Elevators)
-                    .HasForeignKey(d => d.column_id)
+                    .HasForeignKey(d => d.ColumnId)
                     .HasConstraintName("fk_rails_69442d7bc2");
             });
 
@@ -564,6 +659,10 @@ namespace infofetcher.Models
                     .HasColumnName("id")
                     .HasColumnType("bigint(20)");
 
+                entity.Property(e => e.AttachmentFile)
+                    .HasColumnName("attachment_file")
+                    .HasColumnType("varchar(255)");
+
                 entity.Property(e => e.CompanyName)
                     .HasColumnName("company_name")
                     .HasColumnType("varchar(255)");
@@ -580,7 +679,7 @@ namespace infofetcher.Models
                     .HasColumnName("email")
                     .HasColumnType("varchar(255)");
 
-                entity.Property(e => e.file_attachment)
+                entity.Property(e => e.FileAttachment)
                     .HasColumnName("file_attachment")
                     .HasColumnType("mediumblob");
 
@@ -645,12 +744,20 @@ namespace infofetcher.Models
                     .HasColumnName("full_name")
                     .HasColumnType("varchar(255)");
 
+                entity.Property(e => e.NbAppartments)
+                    .HasColumnName("nb_appartments")
+                    .HasColumnType("int(11)");
+
                 entity.Property(e => e.NbApt)
                     .HasColumnName("nb_apt")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.NbBase)
                     .HasColumnName("nb_base")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.NbBasements)
+                    .HasColumnName("nb_basements")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.NbCies)
@@ -697,6 +804,10 @@ namespace infofetcher.Models
 
                 entity.Property(e => e.Total).HasColumnName("total");
 
+                entity.Property(e => e.Type)
+                    .HasColumnName("type")
+                    .HasColumnType("varchar(255)");
+
                 entity.Property(e => e.UpdatedAt)
                     .HasColumnName("updated_at")
                     .HasColumnType("datetime");
@@ -714,6 +825,55 @@ namespace infofetcher.Models
                     .HasColumnType("varchar(255)");
             });
 
+            modelBuilder.Entity<Sms>(entity =>
+            {
+                entity.ToTable("sms");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnName("updated_at")
+                    .HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<Soums>(entity =>
+            {
+                entity.ToTable("soums");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("bigint(20)");
+
+                entity.Property(e => e.Age)
+                    .HasColumnName("age")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.City)
+                    .HasColumnName("city")
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnName("created_at")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.Language)
+                    .HasColumnName("language")
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("name")
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnName("updated_at")
+                    .HasColumnType("datetime");
+            });
 
             modelBuilder.Entity<Users>(entity =>
             {

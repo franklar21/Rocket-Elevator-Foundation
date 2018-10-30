@@ -21,7 +21,7 @@ namespace infofetcher.Controllers {
 
         [HttpGet ("{id}", Name = "GetElevators")]
         public ActionResult<Elevators> GetById (long id) {
-            var item = _context.Elevators.Find (id);
+            var item = _context.Elevators.Find (inactive);
             if (item == null) {
                 return NotFound ();
             }
