@@ -3,17 +3,15 @@ using System.Linq;
 using infofetcher.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace infofetcher.Controllers
-{
+namespace infofetcher.Controllers {
     [Route ("api/columns")]
     [ApiController]
-    public class Columncontroller : ControllerBase 
-    {
+    public class Columncontroller : ControllerBase {
         private readonly mathieu_h_appContext _context;
 
         public Columncontroller (mathieu_h_appContext context) {
             _context = context;
-            
+
         }
 
         [HttpGet]
@@ -22,12 +20,27 @@ namespace infofetcher.Controllers
         }
 
         [HttpGet ("{id}", Name = "GetColumns")]
-        public ActionResult<Columns> GetById (long id) {
+        public string GetById (string Status, long id) {
             var item = _context.Columns.Find (id);
+            var _status = item.Status;
             if (item == null) {
+                return "";
+            }
+            return _status;
+        }
+
+        [HttpPut ("{id}")]
+        public IActionResult Update (long id, Columns item) {
+            var Columns = _context.Columns.Find (id);
+            if (Columns == null) {
                 return NotFound ();
             }
-            return item;
+
+            Columns.Status = item.Status;
+
+            _context.Columns.Update (Columns);
+            _context.SaveChanges ();
+            return NoContent ();
         }
     }
 }
