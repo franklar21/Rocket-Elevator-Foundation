@@ -5205,7 +5205,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
-      "sha512": "sa/cztXesLyTgCiYuef0RK2EAImnak0w2wrjCh/YBTvbn4iV2eTy0q3F8CyUkGiaYEyxUKGVTko6+7SMRBL4Gg==",
+      "sha512": "ab4+TZw3Sxqrr5TwrwVyABeQkhSxYMJXgG6yZw7T+r6Vz+hcOt+pK79o15ESG7kZvWAK9wRG7emnTIia5O6R1Q==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.design/2.1.2",
       "files": [
@@ -11577,28 +11577,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jabir\\.nuget\\packages\\": {},
+    "C:\\Users\\mathi\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\jabir\\Documents\\GitHub\\API_CSharp\\infofetcher\\infofetcher.csproj",
+      "projectUniqueName": "c:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\infofetcher.csproj",
       "projectName": "infofetcher",
-      "projectPath": "c:\\Users\\jabir\\Documents\\GitHub\\API_CSharp\\infofetcher\\infofetcher.csproj",
-      "packagesPath": "C:\\Users\\jabir\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\jabir\\Documents\\GitHub\\API_CSharp\\infofetcher\\obj\\",
+      "projectPath": "c:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\infofetcher.csproj",
+      "packagesPath": "C:\\Users\\mathi\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jabir\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\mathi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -4,7 +4,6 @@ using infofetcher.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
-
 namespace infofetcher.Controllers {
     [Route ("api/elevators")]
     [ApiController]
@@ -13,7 +12,7 @@ namespace infofetcher.Controllers {
 
         public ElevatorController (mathieu_h_appContext context) {
             _context = context;
-            
+
         }
 
         [HttpGet]
@@ -37,5 +36,24 @@ namespace infofetcher.Controllers {
             return _result.ToList();
         }
         
+        [HttpPut ("{id}", Name = "PutElevatorStatus")]
+        public string Update (long id, [FromBody] JObject body) {
+
+            var elevator = _context.Elevators.Find (id);
+            if (elevator == null) {
+                return "Enter a valid elevator id.";
+            }
+
+            var previous_status = elevator.status;
+            var status = (string) body.SelectToken ("status");
+            if (status == "Active" || status == "Inactive" || status == "Alarm" || status == "Intervention") {
+                elevator.status = status;
+                _context.Elevators.Update (elevator);
+                _context.SaveChanges ();
+                return "The elevator #" + elevator.id + " has changed status from " + previous_status + ", to " + status + ".";
+            } else {
+                return "Invalid status: Must be Active, Inactive, Alarm or Intervention";
+            }
+        }
     }
 }
