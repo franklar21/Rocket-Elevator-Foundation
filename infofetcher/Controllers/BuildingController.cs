@@ -29,5 +29,31 @@ namespace infofetcher.Controllers
             }
             return item;
         }
+
+        // Récupération d’une liste de buildings qui contiennent au moins une batterie, une colonne ou un ascenseur requérant une intervention
+
+        [HttpGet ("status", Name = "GetBuildingsList")]
+        public ActionResult<List<Buildings>> Get (string status) {
+            var _result = _context.Buildings.Where(s=>s.Buildings.id == s.Columns.building_id)
+                                .Include(s=>s.Batteries.Where(s=>s.status == "Intervention"))
+                                .Include(s=>s.Columns.Where(s=>s.status == "Intervention"))
+                                .Include(s=>s.Elevators.Where(s=>s.status == "Intervention"))
+                                .FirstOrDefault();
+            return _result.ToList();
+        } 
+
+        //2e version 
+
+        [HttpGet ("status", Name = "GetBuildingsList")]
+      public ActionResult<List<Buildings>> Get (string status, Batteries battery) {
+          var _result = _context.Buildings.Where(s=>s.Id == battery.BuildingId)
+                              .Include(s=>s.Batteries.Where(s=>s.status == "Intervention"))
+                              .Include(s=>s.Columns.Where(s=>s.status == "Intervention"))
+                              .Include(s=>s.Elevators.Where(s=>s.status == "Intervention"))
+                              .FirstOrDefault();
+          return _result.ToList();
+      }
+        
     }
 }
+

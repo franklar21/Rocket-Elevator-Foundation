@@ -5205,7 +5205,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
-      "sha512": "ab4+TZw3Sxqrr5TwrwVyABeQkhSxYMJXgG6yZw7T+r6Vz+hcOt+pK79o15ESG7kZvWAK9wRG7emnTIia5O6R1Q==",
+      "sha512": "sa/cztXesLyTgCiYuef0RK2EAImnak0w2wrjCh/YBTvbn4iV2eTy0q3F8CyUkGiaYEyxUKGVTko6+7SMRBL4Gg==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.design/2.1.2",
       "files": [
@@ -11577,30 +11577,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mathi\\.nuget\\packages\\": {},
+    "C:\\Users\\ordinsteur portable\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\infofetcher.csproj",
+      "projectUniqueName": "C:\\Users\\ordinsteur portable\\Documents\\GitHub\\API_CSharp\\infofetcher\\infofetcher.csproj",
       "projectName": "infofetcher",
-      "projectPath": "C:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\infofetcher.csproj",
-      "packagesPath": "C:\\Users\\mathi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\obj\\",
+      "projectPath": "C:\\Users\\ordinsteur portable\\Documents\\GitHub\\API_CSharp\\infofetcher\\infofetcher.csproj",
+      "packagesPath": "C:\\Users\\ordinsteur portable\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ordinsteur portable\\Documents\\GitHub\\API_CSharp\\infofetcher\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\mathi\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ordinsteur portable\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11642,13 +11640,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\mathi\\Desktop\\API_CSharp\\infofetcher\\obj\\infofetcher.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
