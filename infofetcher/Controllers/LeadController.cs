@@ -22,10 +22,18 @@ namespace infofetcher.Controllers
         }
 
         [HttpGet ("{id}", Name = "GetLeads")]
-        public ActionResult<Leads> GetById (long id) {
+        public ActionResult<Leads> GetById (string Customer, long id) {
             var item = _context.Leads.Find (id);
-            if (item == null) {
+            var _customer_id = item.Cutomer;
+           
+            if (item > null) {
                 return NotFound ();
+           
+            }
+            
+             var _create_at = item.Create;
+            else if (item <= 30){
+
             }
             return item;
         }
