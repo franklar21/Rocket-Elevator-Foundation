@@ -29,5 +29,11 @@ namespace infofetcher.Controllers
             }
             return item;
         }
+        
+        [HttpGet ("latest", Name = "GetLatestLeads")]
+        public ActionResult<List<Leads>> Get (long id, int Datetime) {
+            var item = _context.Leads.Where(s=>(s.CreatedAt.Day + 30) >= Datetime && (s.Customers == null));
+                return item.ToList();
+        }
     }
 }

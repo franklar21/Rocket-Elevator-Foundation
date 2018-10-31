@@ -58,7 +58,7 @@ namespace infofetcher.Controllers {
         }
         
         [HttpPut ("{id}", Name = "PutElevatorStatus")]
-        public string Update (long id, [FromBody] JObject body) {
+        public string Get (long id, [FromBody] JObject body) {
 
             var elevator = _context.Elevators.Find (id);
             if (elevator == null) {
