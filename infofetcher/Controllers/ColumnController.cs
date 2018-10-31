@@ -20,6 +20,7 @@ namespace infofetcher.Controllers {
             return _context.Columns.ToList ();
         }
 
+        // get the status of a specified column
         [HttpGet ("{id}", Name = "GetColumns")]
         public string GetById (string Status, long id) {
             var item = _context.Columns.Find (id);
@@ -31,6 +32,7 @@ namespace infofetcher.Controllers {
             return "The Column #" + _column + " is currently " + _status + ".";
         }
 
+        // change the status of a specified column
         [HttpPut ("{id}", Name = "ChangeColumnStatus")]
         public string Update (long id, [FromBody] JObject body) {
             
@@ -45,9 +47,8 @@ namespace infofetcher.Controllers {
                 column.Status = status;
                 _context.Columns.Update (column);
                 _context.SaveChanges ();
-                // please.
                 return "The column #" + column.Id + " has changed status from " + previous_status + ", to " + status + ".";
-            }else {
+            } else {
                 return "Invalid status: Must be Active, Inactive, Alarm or Intervention";
             }
         }

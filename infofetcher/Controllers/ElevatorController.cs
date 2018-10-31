@@ -20,17 +20,19 @@ namespace infofetcher.Controllers {
             return _context.Elevators.ToList ();
         }
 
+        // Get the current status of the specified elevator
         [HttpGet ("{id}", Name = "GetElevators")]
         public string GetById (long id) {
             var item = _context.Elevators.Find (id);
             var _status = item.status;
+            var _id =  _context.Elevators.Find (id).id;
             if (item == null) {
                 return "Please enter a valid id.";
             }
-            return _status;
+            return "The elevator #" + _id + " is currently " + _status + ".";
         }
 
-        // Récupération d’une liste d’ascenseurs qui ne sont pas en opération au moment de la requête
+        // Get all elevators that are not currently active.
         [HttpGet ("status", Name = "GetNotActiveElevators")]
         public ActionResult<List<Elevators>> Get (string status) {
             var _result = _context.Elevators.Where(s=>s.status!="Operational");

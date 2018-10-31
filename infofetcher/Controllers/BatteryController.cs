@@ -23,15 +23,18 @@ namespace infofetcher.Controllers
             return _context.Batteries.ToList ();
         }
 
+        // Get the specified battery status
         [HttpGet ("{id:int}", Name = "GetBatteryStatus")]
         public string GetById (long id) {
             var batteryStatus = _context.Batteries.Find(id).Status;
-            
+            var _battery = _context.Batteries.Find(id).Id;
             if (batteryStatus == null) {
-                return "";
+                return "Please enter a valid id";
             }
-            return batteryStatus;
+            return "The battery #" + _battery + " is currently " + batteryStatus + ".";
         }
+
+        // Change the status of the specified battery
         [HttpPut ("{id}", Name = "ChangeBatteryStatus")]
         public string Update (long id, [FromBody] JObject body) {
             
