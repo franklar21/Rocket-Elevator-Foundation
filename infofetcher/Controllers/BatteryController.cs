@@ -18,6 +18,7 @@ namespace infofetcher.Controllers
             
         }
 
+        // get all batteries
         [HttpGet]
         public ActionResult<List<Batteries>> GetAll () {
             return _context.Batteries.ToList ();

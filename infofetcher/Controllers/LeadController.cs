@@ -16,11 +16,13 @@ namespace infofetcher.Controllers
             
         }
 
+        // get all leads.
         [HttpGet]
         public ActionResult<List<Leads>> GetAll () {
             return _context.Leads.ToList ();
         }
 
+        // get a specific lead with it's id.
         [HttpGet ("{id}", Name = "GetLeads")]
         public ActionResult<Leads> GetById (long id) {
             var item = _context.Leads.Find (id);
@@ -30,7 +32,7 @@ namespace infofetcher.Controllers
             return item;
         }
 
-        // Get the leads in the last 30 days.
+        // Get all of the leads made in the last 30 days.
         [HttpGet ("latest", Name = "GetLatestLeads")]
         public ActionResult<List<Leads>> Get (long id, int Datetime) {
             var item = _context.Leads.Where(l=>(l.CreatedAt.Day + 30) >= Datetime);
