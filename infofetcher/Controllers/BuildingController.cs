@@ -17,12 +17,13 @@ namespace infofetcher.Controllers {
             _context = context;
 
         }
-
+        // get all buildings
         [HttpGet]
         public ActionResult<List<Buildings>> GetAll () {
             return _context.Buildings.ToList ();
         }
 
+        // getting a specific building with it's id
         [HttpGet ("{id}", Name = "GetBuildings")]
         public ActionResult<Buildings> GetById (long id) {
             var item = _context.Buildings.Find (id);
@@ -35,7 +36,7 @@ namespace infofetcher.Controllers {
             var i_dont_know = "I dont't know what I'm doing anymore.";
             return i_dont_know;
         }
-
+        // getting a list of buildings that have either a battery, column or elevator that needs intervention
         [HttpGet ("status", Name = "GetBuildingsList")]
         public ActionResult<List<Buildings>> Get () {
             var buildings = _context.Buildings

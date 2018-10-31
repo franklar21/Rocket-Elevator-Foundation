@@ -15,6 +15,7 @@ namespace infofetcher.Controllers {
 
         }
 
+        // get all colums.
         [HttpGet]
         public ActionResult<List<Columns>> GetAll () {
             return _context.Columns.ToList ();

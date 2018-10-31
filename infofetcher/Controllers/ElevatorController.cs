@@ -15,6 +15,7 @@ namespace infofetcher.Controllers {
 
         }
 
+        // get all elevators.
         [HttpGet]
         public ActionResult<List<Elevators>> GetAll () {
             return _context.Elevators.ToList ();
@@ -39,6 +40,7 @@ namespace infofetcher.Controllers {
             return _result.ToList();
         }
         
+        // Change the status for a specified elevatos
         [HttpPut ("{id}", Name = "PutElevatorStatus")]
         public string Update (long id, [FromBody] JObject body) {
 
