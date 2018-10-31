@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace infofetcher.Models
 {
@@ -26,6 +27,7 @@ namespace infofetcher.Models
 
         public virtual Addresses Address { get; set; }
         public virtual Customers Customer { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Batteries> Batteries { get; set; }
         public virtual ICollection<BuildingDetails> BuildingDetails { get; set; }
     }
