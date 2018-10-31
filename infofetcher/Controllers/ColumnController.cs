@@ -36,7 +36,7 @@ namespace infofetcher.Controllers {
             
             var column = _context.Columns.Find (id);
             if (column == null) {
-                return "Not Found";
+                return "Enter a valid column id.";
             }
             
             var previous_status = column.Status; 
@@ -48,7 +48,7 @@ namespace infofetcher.Controllers {
                 // please.
                 return "The column #" + column.Id + " has changed status from " + previous_status + ", to " + status + ".";
             }else {
-                return "Not Found";
+                return "Invalid status: Must be Active, Inactive, Alarm or Intervention";
             }
         }
     }
