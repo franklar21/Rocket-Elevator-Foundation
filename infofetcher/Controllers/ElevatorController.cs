@@ -21,31 +21,32 @@ namespace infofetcher.Controllers {
         }
 
         [HttpGet ("{id}", Name = "GetElevators")]
-        public ActionResult<Elevators> GetById (long id) {
+        public string GetById (long id) {
             var item = _context.Elevators.Find (id);
+            var _status = item.status;
             if (item == null) {
-                return NotFound ();
+                return "";
             }
-            return item;
+            return _status;
         }
 
-        [HttpPut ("{id}", Name = "ChangeElevatorStatus")]
+        [HttpPut ("{id}", Name = "PutElevatorStatus")]
         public string Update (long id, [FromBody] JObject body) {
-            
+
             var elevator = _context.Elevators.Find (id);
             if (elevator == null) {
-                return "Please enter a new status";
+                return "Not Found";
             }
 
-            var newStatus = (string)body.SelectToken("status");
-            if (newStatus == "Active"  || (newStatus == "Inactive" ) || (newStatus == "Alarm" ) || (newStatus == "Intervention")){
-                var initialStatus = elevator.status;
-                elevator.status = newStatus;
+            var previous_status = elevator.status;
+            var status = (string) body.SelectToken ("status");
+            if (status == "Active" || status == "Inactive" || status == "Alarm" || status == "Intervention") {
+                elevator.status = status;
                 _context.Elevators.Update (elevator);
                 _context.SaveChanges ();
-                return "The status of elevator #" + elevator.id + " successfuly changed from " + initialStatus + " to " + newStatus;
+                return "The elevator #" + elevator.id + " has changed status from " + previous_status + ", to " + status + ".";
             } else {
-                return "Invalid status: Must be Active, Inactive, Alarm or Intervention";
+                return "Not Found";
             }
         }
     }
