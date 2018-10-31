@@ -18,14 +18,18 @@ namespace infofetcher.Controllers {
         public ActionResult<List<Elevators>> GetAll () {
             return _context.Elevators.ToList ();
         }
+        
+       
+
 
         [HttpGet ("{id}", Name = "GetElevators")]
-        public ActionResult<Elevators> GetById (long id) {
-            var item = _context.Elevators.Find (inactive);
+        public string GetById (string Status, long id) {
+            var item = _context.Elevators.Find (id);
+            var _status = item.Status;
             if (item == null) {
-                return NotFound ();
+                return "";
             }
-            return item;
+            return _status;
         }
     }
 }
