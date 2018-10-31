@@ -25,15 +25,6 @@ namespace infofetcher.Controllers {
 
         // Get the current status of the specified elevator
         [HttpGet ("{id}", Name = "GetElevators")]
-<<<<<<< HEAD
-        public string GetById (string Status, long id) {
-            var item = _context.Elevators.Find (id);
-            var _status = item.Status;
-            if (item == null) {
-                return "";
-            }
-            return _status;
-=======
         public string GetById (long id) {
             var item = _context.Elevators.Find (id);
             var _status = item.status;
@@ -69,7 +60,6 @@ namespace infofetcher.Controllers {
             } else {
                 return "Invalid status: Must be Active, Inactive, Alarm or Intervention";
             }
->>>>>>> master
         }
     }
 }

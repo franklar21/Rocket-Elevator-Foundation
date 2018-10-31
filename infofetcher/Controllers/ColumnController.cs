@@ -24,27 +24,6 @@ namespace infofetcher.Controllers {
         [HttpGet ("{id}", Name = "GetColumns")]
         public string GetById (string Status, long id) {
             var item = _context.Columns.Find (id);
-<<<<<<< HEAD
-            var _status = item.Status;
-            if (item == null) {
-                return "";
-            }
-            return _status;
-        }
-
-        [HttpPut ("{id}")]
-        public IActionResult Update (long id, Columns item) {
-            var Columns = _context.Columns.Find (id);
-            if (Columns == null) {
-                return NotFound ();
-            }
-
-            Columns.Status = item.Status;
-
-            _context.Columns.Update (Columns);
-            _context.SaveChanges ();
-            return NoContent ();
-=======
             var _column = item.Id;
             var _status = item.Status;
             if (item == null) {
@@ -72,7 +51,6 @@ namespace infofetcher.Controllers {
             } else {
                 return "Invalid status: Must be Active, Inactive, Alarm or Intervention";
             }
->>>>>>> master
         }
     }
 }
