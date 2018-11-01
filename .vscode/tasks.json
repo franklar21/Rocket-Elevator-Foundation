@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/infofetcher/infofetcher.csproj"
+                "${workspaceFolder}/infofetcher.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
