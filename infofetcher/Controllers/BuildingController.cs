@@ -32,10 +32,7 @@ namespace infofetcher.Controllers {
             }
             return item;
         }
-        public string WhyThough () {
-            var i_dont_know = "I dont't know what I'm doing anymore.";
-            return i_dont_know;
-        }
+        
         // getting a list of buildings that have either a battery, column or elevator that needs intervention
         [HttpGet ("status", Name = "GetBuildingsList")]
         public ActionResult<List<Buildings>> Get () {
