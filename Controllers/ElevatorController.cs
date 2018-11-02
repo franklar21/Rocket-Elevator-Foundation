@@ -36,7 +36,7 @@ namespace infofetcher.Controllers {
         // Get all elevators that are not currently active.
         [HttpGet ("status", Name = "GetNotActiveElevators")]
         public ActionResult<List<Elevators>> Get (string status) {
-            var _result = _context.Elevators.Where(s=>s.status!="Operational");
+            var _result = _context.Elevators.Where(s=>s.status!="Active");
             return _result.ToList();
         }
         
