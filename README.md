@@ -3,6 +3,8 @@
 
 Récupération du Statut actuel d’une Batterie d’ascenseurs pour une Batterie spécifiée:
 GET https://rocketcsharpapi.azurewebsites.net/api/batteries/(#batterie)  
+
+
  Modification du Statut d’une Batterie d’ascenseurs spécifiée:
 PUT https://rocketcsharpapi.azurewebsites.net/api/batteries/(#batterie)  
 	JSON:
@@ -12,6 +14,8 @@ PUT https://rocketcsharpapi.azurewebsites.net/api/batteries/(#batterie) 
 	
 Récupération du Statut actuel d’une Colonne d’ascenseurs pour une Batterie  spécifiée :
 GET https://rocketcsharpapi.azurewebsites.net/api/columns/(#colonne) 
+
+
  Modification du Statut d’une Colonne d’ascenseurs spécifiée:
 PUT https://rocketcsharpapi.azurewebsites.net/api/columns/(#colonne) 
 	JSON:
@@ -21,6 +25,8 @@ PUT https://rocketcsharpapi.azurewebsites.net/api/columns/(#colonne)
 	
  Récupération du Statut actuel d’une Cage d’ascenseur pour une cage spécifiée:
 GET https://rocketcsharpapi.azurewebsites.net/api/elevators/(#ascenseur) 
+
+
  Modification du Statut d’une Cage d’ascenseur spécifiée:
 PUT https://rocketcsharpapi.azurewebsites.net/api/elevators/(#ascenseur) 
 	JSON:
